@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+  min-width: 250px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  cursor: default;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+  
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+ul li:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+
+ul li:hover {
+  background: #ddd;
+}
+
+
+.sulje {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+.sulje:hover {
+  cursor: pointer;
+  background-color: #ff0000;
+  color: white;
+}
+
+.header {
+  background-color: #3e0bca;
+  padding: 30px 40px;
+  color: white;
+  text-align: center;
+}
+
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+input {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+}
+
+.lisaaBtn {
+  padding: 10px;
+  width: 25%;
+  background: #d9d9d9;
+  color: #555;
+  float: left;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.1s;
+  border-radius: 0;
+}
+
+.lisaaBtn:hover {
+  background-color: #bbb;
+}
+</style>
+</head>
+<body>
+
+<div id="myDIV" class="header">
+  <h2 style="margin:5px">Muistilista</h2>
+  <input type="text" id="teksti" placeholder="Kirjoita...">
+  <span onclick="newElement()" class="lisaaBtn">Lisää listaan</span>
+</div>
+
+<ul id="lista">
+  <li>hipelöi joka toinen ilta kiveksiä</li>
+  <li>korjaa koodis läski</li>
+  <li>maasturin jousitus kestää jopa isommankin neekerin yliajon</li>
+</ul>
+
+<script>
+
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "sulje";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+
+var sulje = document.getElementsByClassName("sulje");
+var i;
+for (i = 0; i < sulje.length; i++) {
+  sulje[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+
+
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("teksti").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("Sinun täytyy kirjoittaa jotain!");
+  } else {
+    document.getElementById("lista").appendChild(li);
+  }
+  document.getElementById("teksti").value = "";
+  window.addEventListener('keypress', function (e)
+      )
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "sulje";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < sulje.length; i++) {
+    sulje[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+
+fucntion enterNappi() {
+  if ()
+}
+</script>
+
+</body>
+</html>
