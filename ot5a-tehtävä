@@ -96,21 +96,35 @@ input {
 }
 </style>
 </head>
-<body>
+<body onload="getFocusTxt()">
 
 <div id="myDIV" class="header">
-  <h2 style="margin:5px">Muistilista</h2>
-  <input type="text" id="teksti" placeholder="Kirjoita...">
-  <span onclick="newElement()" class="lisaaBtn">Lisää listaan</span>
+  <h1 style="margin:5px">Muistilista</h2>
+  <input type="text" id="teksti" placeholder="Kirjoita..."> <br><br><br>
+  <span onclick="listaaAsia()" class="lisaaBtn">Lisää listaan</span>
+  <span onclick="listaaAsia()" class="lisaaBtn">Lisää listaan</span>
 </div>
 
 <ul id="lista">
-  <li>hipelöi joka toinen ilta kiveksiä</li>
-  <li>korjaa koodis läski</li>
-  <li>maasturin jousitus kestää jopa isommankin neekerin yliajon</li>
+  <li>Osta lenkkikengät</li>
+  <li>Mene kotiin</li>
+  <li>Palaveri keskiviikkona</li>
+  <li>Koodaa muistilista</li>
 </ul>
 
 <script>
+
+function getFocusTxt() {
+    document.getElementById("teksti").focus();
+}
+
+function checkKeyPress(e){
+  if(e.keyCode == "13"){
+    listaaAsia();
+  }
+}
+window.addEventListener("keydown", checkKeyPress);
+
 
 var myNodelist = document.getElementsByTagName("LI");
 var i;
@@ -131,8 +145,7 @@ for (i = 0; i < sulje.length; i++) {
   }
 }
 
-
-function newElement() {
+function listaaAsia() {
   var li = document.createElement("li");
   var inputValue = document.getElementById("teksti").value;
   var t = document.createTextNode(inputValue);
@@ -143,8 +156,6 @@ function newElement() {
     document.getElementById("lista").appendChild(li);
   }
   document.getElementById("teksti").value = "";
-  window.addEventListener('keypress', function (e)
-      )
 
   var span = document.createElement("SPAN");
   var txt = document.createTextNode("\u00D7");
@@ -158,10 +169,8 @@ function newElement() {
       div.style.display = "none";
     }
   }
-}
+  getfocustxt();
 
-fucntion enterNappi() {
-  if ()
 }
 </script>
 
