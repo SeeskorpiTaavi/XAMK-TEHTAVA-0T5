@@ -56,7 +56,7 @@ ul li:hover {
 }
 
 .header {
-  background-color: #3e0bca;
+  background-color: #08b1ff;
   padding: 30px 40px;
   color: white;
   text-align: center;
@@ -72,7 +72,7 @@ input {
   margin: 0;
   border: none;
   border-radius: 0;
-  width: 75%;
+  width: 100%;
   padding: 10px;
   float: left;
   font-size: 16px;
@@ -80,20 +80,38 @@ input {
 
 .lisaaBtn {
   padding: 10px;
-  width: 25%;
-  background: #d9d9d9;
+  width: 45%;
+  background: #ffffff;
   color: #555;
   float: left;
   text-align: center;
-  font-size: 16px;
+  font-size: 25px;
   cursor: pointer;
-  transition: 0.1s;
+  transition: 0.3s;
+  border-radius: 0;
+}
+
+.tyhjennaListaBtn {
+  padding: 10px;
+  width: 45%;
+  background: #ffffff;
+  color: #555;
+  float: right;
+  text-align: center;
+  font-size: 25px;
+  cursor: pointer;
+  transition: 0.3s;
   border-radius: 0;
 }
 
 .lisaaBtn:hover {
   background-color: #bbb;
 }
+
+.tyhjennaListaBtn:hover {
+  background-color: #bbb;
+}
+
 </style>
 </head>
 <body onload="getFocusTxt()">
@@ -101,18 +119,24 @@ input {
 <div id="myDIV" class="header">
   <h1 style="margin:5px">Muistilista</h2>
   <input type="text" id="teksti" placeholder="Kirjoita..."> <br><br><br>
-  <span onclick="listaaAsia()" class="lisaaBtn">Lisää listaan</span>
-  <span onclick="listaaAsia()" class="lisaaBtn">Lisää listaan</span>
+  <span onclick="listaaAsia()" class="lisaaBtn">Lisää listaan "Enter"</span>
+  <span onclick="listanTyhjennys()" class="tyhjennaListaBtn">Tyhjennä koko lista "Delete"</span>
 </div>
 
-<ul id="lista">
+<ul id="minunLista">
   <li>Osta lenkkikengät</li>
-  <li>Mene kotiin</li>
   <li>Palaveri keskiviikkona</li>
   <li>Koodaa muistilista</li>
 </ul>
 
 <script>
+
+function listanTyhjennys() {
+  var list = document.getElementById("minunLista");
+  while (list.hasChildNodes()) {
+    list.removeChild(list.firstChild);
+  }
+}
 
 function getFocusTxt() {
     document.getElementById("teksti").focus();
@@ -123,7 +147,15 @@ function checkKeyPress(e){
     listaaAsia();
   }
 }
+
+function checkKeyPress2(e){
+  if(e.keyCode == "46"){
+    listanTyhjennys();
+  }
+}
+
 window.addEventListener("keydown", checkKeyPress);
+window.addEventListener("keydown", checkKeyPress2);
 
 
 var myNodelist = document.getElementsByTagName("LI");
@@ -153,7 +185,7 @@ function listaaAsia() {
   if (inputValue === '') {
     alert("Sinun täytyy kirjoittaa jotain!");
   } else {
-    document.getElementById("lista").appendChild(li);
+    document.getElementById("minunLista").appendChild(li);
   }
   document.getElementById("teksti").value = "";
 
